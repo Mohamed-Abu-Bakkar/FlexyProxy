@@ -1,6 +1,8 @@
+// api/proxy.js
 import express from "express";
 import cors from "cors";
 import fetch from "node-fetch";
+import serverless from "serverless-http";
 
 const app = express();
 
@@ -64,8 +66,5 @@ app.all("/proxy", async (req, res) => {
   }
 });
 
-// ===== Start Server =====
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () =>
-  console.log(`🚀 Flexible Proxy running on port ${PORT}`)
-);
+// Export for Vercel
+export default serverless(app);
