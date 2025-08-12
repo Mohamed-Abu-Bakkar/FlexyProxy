@@ -8,6 +8,16 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// ===== Health Check Route =====
+app.get("/", (req, res) => {
+  res.status(200).json({
+    status: "ok",
+    service: "Flexible Proxy",
+    message: "The Flexible Proxy server is up and running 🚀",
+    timestamp: new Date().toISOString(),
+  });
+});
+
 // ===== Utility Functions =====
 function buildFetchOptions({ method = "GET", headers = {}, body = {} }) {
   const options = {
