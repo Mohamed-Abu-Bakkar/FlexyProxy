@@ -67,4 +67,6 @@ app.all("/proxy", async (req, res) => {
 });
 
 // Export for Vercel
+export { app };
+
 export default serverless(app);
